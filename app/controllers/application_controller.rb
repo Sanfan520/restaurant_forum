@@ -13,5 +13,5 @@ private
 #透過 current_user 拿到 User instance，接著呼叫一個叫 admin? 的 instance method
 #若 current_user.admin? 回傳 False，就將警告訊息寫入 flash method，跳回首頁並且顯示警告訊息。
 
-# if !current_user.admin?  = unless current_user.admin? 
+# if !current_user.admin?  = unless current_user.admin?
 end
