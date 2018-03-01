@@ -1,31 +1,3 @@
-<%# 幫助使用者了解為何被退回，我們需要讀取 @restaurant.errors 的內容，引導使用者再次進行修改。 %>
-<% if @restaurant.errors.any?%>
- <h2>We have some errors here!</h2>
- <ul>
-    <% @restaurant.errors.full_messages.each do|msg|%>
-    <li><%= msg%></li>
-    <% end %>
- </ul>
-<% end %>
+<%= render partial: "form" %>
 
-<%#之前我們在設定 Routes 時，使用一個名為 admin 的 namespace 來設定後台的資源，
-因此，你需要在 form_for 後面用中括號標示 [:admin, @restaurant]，
-來告訴 Rails 要去 namespace 找到相對應的路徑。%>
-<%= form_for  [:admin, @restaurant] do |f| %>
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name %>
-
-  <%= f.label :tel, "Tel" %>
-  <%= f.text_field :tel %>
-
-  <%= f.label :address, "Address" %>
-  <%= f.text_field :address %>
-
-  <%= f.label :opening_hours, "Opening Hours" %>
-  <%= f.text_field :opening_hours %>
-
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
-
-  <%= f.submit %>
-<% end %>
+<%#將 new.html.erb 內的全部程式碼搬移到 _form.html.erb%>
