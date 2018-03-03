@@ -28,5 +28,10 @@
     <%= f.label :description, "Description" %>
     <%= f.text_area :description %>
 
+    <%= f.label :image, "Photo" %>
+    <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+    <%= f.file_field :image %>
+<%##@restaurant.image? - 查看該餐廳物件的 image 屬性是否有攜帶內容，有則回傳 True，
+沒有則回傳 False。（ Rails 裡所有的物件屬性都會自動帶有「attribute_name?」這樣的方法） %>
     <%= f.submit %>
    <% end %>
