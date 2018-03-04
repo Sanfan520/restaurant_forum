@@ -9,9 +9,22 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+     <!--use Alert components for flash -->
+      <% if flash[:notice] %>
+      <div class="container">
+          <div class="row">
+         <div class="alert alert-success"><%= notice %></div>
+          </div>
+        </div>
+        <% end %>
 
+        <% if flash[:alert] %>
+        <div class="container">
+          <div class="row">
+            <div class="alert alert-danger"><%= alert %></div>
+          </div>
+        </div>
+        <% end %>
     <!-- 導覽列 -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
