@@ -1,37 +1,58 @@
 <%#  幫助使用者了解為何被退回，我們需要讀取 @restaurant.errors 的內容，引導使用者再次進行修改。 %>
-   <% if @restaurant.errors.any? %>
-   <h2>We have some errors here!</h2>
-    <ul>
-       <% @restaurant.errors.full_messages.each do|msg|%>
-          <li><%= msg %></li>
-       <% end %>
-    </ul>
+ <div class="container">
+   <div class="row">
+
+     <% if @restaurant.errors.any? %>
+       <h4>We have some errors here !</h4>
+       <ul>
+         <% @restaurant.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+       <hr>
     <% end %>
 
 <%#  之前我們在設定 Routes 時，使用一個名為 admin 的 namespace 來設定後台的資源，
 因此，你需要在 form_for 後面用中括號標示 [:admin, @restaurant]，
 來告訴 Rails 要去 namespace 找到相對應的路徑。%>
+   <%= form_for [:admin, @restaurant] do |f| %>
 
-   <%= form_for  [:admin, @restaurant] do |f| %>
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
+      <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
 
-    <%= f.label :tel, "Tel" %>
-    <%= f.text_field :tel %>
+      <div class="form-group">
+        <%= f.label :tel, "Tel" %>
+        <%= f.text_field :tel, class: "form-control" %>
+      </div>
 
-    <%= f.label :address, "Address" %>
-    <%= f.text_field :address %>
+      <div class="form-group">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
 
-   <%= f.label :opening_hours, "Opening Hours" %>
-    <%= f.text_field :opening_hours %>
+      <div class="form-group">
+        <%= f.label :opening_hours, "Opening Hours" %>
+        <%= f.text_field :opening_hours, class: "form-control" %>
+      </div>
 
-    <%= f.label :description, "Description" %>
-    <%= f.text_area :description %>
+      <div class="form-group">
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
 
-    <%= f.label :image, "Photo" %>
-    <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
-    <%= f.file_field :image %>
+      <div class="form-group">
+        <%= f.label :image, "Photo" %>
+        <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
 <%##@restaurant.image? - 查看該餐廳物件的 image 屬性是否有攜帶內容，有則回傳 True，
 沒有則回傳 False。（ Rails 裡所有的物件屬性都會自動帶有「attribute_name?」這樣的方法） %>
-    <%= f.submit %>
-   <% end %>
+   </div>
++</div>
