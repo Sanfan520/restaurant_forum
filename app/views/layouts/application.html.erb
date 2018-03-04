@@ -54,12 +54,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="pull-right text-right nav navbar-nav">
             <% if current_user %>
-            <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-            <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
-            <li><%= link_to('Password Change', edit_user_registration_path) %></li>
-            <% else %>
-            <li><%= link_to('Register', new_user_registration_path) %></li>
-            <li><%= link_to('Login', new_user_session_path) %></li>
+                 <!--追加後台按鈕-->
+                <% if current_user.admin? %>
+                 <li><%= link_to 'Admin Backend', admin_restaurants_path %></li>
+                <% end %>
+              <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+              <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+              <li><%= link_to('Password Change', edit_user_registration_path) %></li>
+              <% else %>
+              <li><%= link_to('Register', new_user_registration_path) %></li>
+              <li><%= link_to('Login', new_user_session_path) %></li>
             <% end %>
           </ul>
         </div>
