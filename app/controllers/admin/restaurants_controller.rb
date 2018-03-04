@@ -7,9 +7,12 @@ class Admin::RestaurantsController < ApplicationController
 #在rails裡，可以用Restaurant.all物件導向方法撈出資料
 #撈出來的資料需要存到變數才能操作,故拿到資料後，寫進@restaurants變數，把這個變數傳到view，利用erb把資料塞進html內
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.page(params[:page]).per(10)
   end
-
+  #Restaurant.all被Restaurant.page(params[:page]).per(10)取代
+  #page - Kaminari 提供的方法，根據分頁序數來篩選對應資料;
+  #per - Kaminari 提供的方法，決定一頁有幾筆資料
+  #params[:page] - 瀏覽器請求網頁時帶入的參數
 
 #總結:做完new action的new method後，產生了實例，接著用create action的create method將資料存起來，資料若存取成功導回至Index頁面
   def new
@@ -66,7 +69,7 @@ class Admin::RestaurantsController < ApplicationController
    private
 
    def restaurant_params
-     params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
+     params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image)
    end
 
    def set_restaurant

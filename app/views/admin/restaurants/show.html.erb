@@ -5,6 +5,6 @@ Tel: <%= @restaurant.tel %><br>
 Address: <%= @restaurant.address %><br>
 Description: <%= @restaurant.description %><br>
 <%= image_tag @restaurant.image, width: '600px' %>
-
+<%# size: ”140x140” 也可改寫 width= ”140px” ,height= “140px”%>
 <br>
 <%= link_to 'Back to index', admin_restaurants_path %>
