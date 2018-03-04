@@ -10,5 +10,6 @@
   <% end %>
 </ul>
 <%= link_to 'New Restaurant', new_admin_restaurant_path%>
+<br>
 <%= paginate @restaurants %>
 <%#是 Kaminari 提供的 helper，後面接從 controller 傳進來的實例變數。%>
