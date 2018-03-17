@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
-#  mount_uploader :image, PhotoUploader
+  mount_uploader :image, PhotoUploader
 #把圖片上船器掛載到Restaurant model上面，到restaurant.rb使用mout_uploader方法掛上去
 #mount_uploader :colume_name, ClassName
 ##欄位名稱為symbol型態,類別名稱為constant型態
