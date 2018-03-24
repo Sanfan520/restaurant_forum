@@ -9,7 +9,10 @@ namespace :dev do
       opening_hours: FFaker::Time.datetime,
       tel: FFaker::PhoneNumber.short_phone_number,
       address: FFaker::Address.street_address,
-      description: FFaker::Lorem.paragraph
+      description: FFaker::Lorem.paragraph,
+      category_id: Category.all.sample
+      #使用 sample 方法從集合中自動挑出一個項目回傳，在這裡回傳的會是一個 Category instance。
+      #傳入一個 Category instance 給 category_id 選項。      
     )
   end
     #要產生的 Restaurant 屬性清單裡沒有包含 image，因為 image 已經掛載成為 CarrierWave 的圖片上傳欄位
