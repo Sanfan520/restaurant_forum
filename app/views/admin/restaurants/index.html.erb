@@ -24,7 +24,7 @@
           <% @restaurants.each do |restaurant| %> <%#整張table是restaurant複數，使用each 讀每一行時，用restaurant單數，代表一筆筆讀出資料 ex:restaurant.name%>
           <tr>
             <th scope="row"><%= restaurant.id %></th>
-            <td><%= restaurant.category.name %></td>
+            <td>[<%= restaurant.category.name %>]</td>
             <td>
               <%= link_to 'Show', admin_restaurant_path(restaurant) %>
               <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
