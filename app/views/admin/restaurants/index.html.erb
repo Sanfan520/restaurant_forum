@@ -5,7 +5,14 @@
   <div class="row">
 
     <div class="col-md-12">
-
+      <div>
+        <%= link_to 'Restaurant',admin_restaurants_path, :style=>'color: #ffffff; font-size:14px'%> |
+        <%#到restaurant index目錄%>
+        <%= link_to 'Categories',admin_categories_path, :style=>'color: #ffffff;font-size:14px'%>
+        <%# 到category index目錄%>
+      </div>
+    </br>
+    </div>
       <div>
         <%= link_to 'New Restaurant', new_admin_restaurant_path, class: "btn btn-primary" %>
       </div>
@@ -22,9 +29,10 @@
         </thead>
         <tbody>
           <% @restaurants.each do |restaurant| %> <%#整張table是restaurant複數，使用each 讀每一行時，用restaurant單數，代表一筆筆讀出資料 ex:restaurant.name%>
-          <tr>
-            <th scope="row"><%= restaurant.id %></th>
-            <td>[<%= restaurant.category.name %>]</td>
+          <tr><%#table row%>
+            <th scope="row"><%= restaurant.id %></th><%#table head%>
+            <%#通過屬性值 row，表頭行包括的所有表格都將和表頭單元格聯繫起來。%>
+            <td>[<%= restaurant.category.name %>]</td><%#table head%>
             <td><%= restaurant.name %></td>
             <td>
               <%= link_to 'Show', admin_restaurant_path(restaurant) %>

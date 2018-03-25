@@ -4,7 +4,10 @@ class Admin::CategoriesController < ApplicationController
   #驗證請求進入後台的是否為已登入的 User
   before_action :authenticate_admin
   #驗證該 User 身份是否為網站管理員
-end
 
 #ApplicationController已經有authenticate_admin了，
 #而Admin::CategoriesController繼承了ApplicationController所以就不用再定義一次authenticate_admin
+ def index
+  @categories = Category.all
+ end
+end

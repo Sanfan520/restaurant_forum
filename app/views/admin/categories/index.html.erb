@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>List of Restaurnat Categories</h1>
+    <div>
+     <%= link_to 'Restaurant', admin_restaurants_path, :style=>'color: #000000'%> |
+     <%= link_to 'Categories', admin_categories_path, :style=>'color: #000000' %>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+          <thread> <%#thread標籤為表格頭部%>
+            <tr><%#table row%>
+              <th>#</th> <%#table head%>
+              <th>Category Name</th>
+            </tr>
+          </thread>
+
+          <tbody> <%#tbody標籤為表格主體內容%>
+             <% @categories.each do |category| %>
+             <tr>
+               <th scope="row"><%= category.id %></th>
+               <td><%= category.name%></td>
+             </tr>
+             <% end %>
+          </tbody>
+
+        </table>
+    </div>
+  </div>
+
+
+</div>
