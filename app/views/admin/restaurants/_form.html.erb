@@ -18,6 +18,17 @@
    <%= form_for [:admin, @restaurant] do |f| %>
 
       <div class="form-group">
+        <%= f.label :category %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+<%#collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
+#collection_selcect前五個屬性是必要的 :指定要操作的方法, 指定特定物件集合來產生 <option> 標籤, 呼叫 Category 的特定方法，來產生 <option value=?> 的值,呼叫 Category 的特定方法，來產生 <option value=?> 的文字內容
+#第六個 第七個屬性可省略不寫，保留大括號{},{}即可
+#options = {}其他的選單設定, html_options = {}	設定其他 HTML 屬性，如：style、class, 此載入bootstrap 所提供的form-control
+#由於在 form_for 的設定裡，已經傳入了實例變數 @restaurant，所以第一個參數 object 不需要再重複傳入，然而，需要在 collection_select 前加上「f.」
+#prompt: ture 預設選項會跑出「please select」,也可以設定 prompt: "選我選我" 帶入要顯示的字串%>
+
+      <div class="form-group">
         <%= f.label :name, "Name" %>
         <%= f.text_field :name, class: "form-control" %>
       </div>
