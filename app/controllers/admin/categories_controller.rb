@@ -9,5 +9,26 @@ class Admin::CategoriesController < ApplicationController
 #而Admin::CategoriesController繼承了ApplicationController所以就不用再定義一次authenticate_admin
  def index
   @categories = Category.all
+  @category = Category.new
+  #要直接在category index表單上新增category,不需new.html.erb的view,故也不需特別用一個(def)new方法
  end
+
+ def create
+    @category = Category.new(category_params)
+   if @category.save
+    flash[:notice] = "category was sucessfully created"
+    redirect_to admin_categories_path
+   else
+    @categories = Category.all
+    render :index
+   end
+ end
+
+private
+
+ def category_params
+  params.require(:category).permit(:name)
+ end
+
+
 end
