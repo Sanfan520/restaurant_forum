@@ -13,9 +13,20 @@
          <%=f.text_field :name, placeholder:"Category Name", class:"form-control"%>
        </div>
          <%=f.submit class: "btn btn-primary" %>
+         <% if @category.errors.any? %>
+           <%= @category.errors.full_messages.to_sentence %>
+         <% end %>
       <% end %>
     </div>
     <br>
+
+<!--上面寫的 f.submit class: "btn btn-primary" -->
+<!--在資料新增(create)失敗時，我們想給使用者提示-->
+<!--當model資料驗證不通過時，會將資料退回，將訊息塞進errors method中-->
+<!--model會去解釋這個資料發生什麼問題-->
+
+<!--@category.errors.messages 拿到錯誤資料說明(hash型態); -->
+<!--@category.errors.full_messages.to_sentence 把messages內容變成(陣列)再變成(字串)-->
 
     <div class="row">
       <div class="col-md-12">

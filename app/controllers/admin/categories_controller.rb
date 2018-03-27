@@ -21,8 +21,12 @@ class Admin::CategoriesController < ApplicationController
    else
     @categories = Category.all
     render :index
-   end
- end
+  end
+end
+#else需加入categories = Category.all 原因:
+#在create action裡面要求重新render index樣板，
+#可以理解成:由"controller"中的create action走到"view"把index樣板(index.html.erb)render後，
+#再傳送到使用者瀏覽器。這中間並沒有經過index action，不會有@categories的實例變數，所以要在render index前加入實例變數。
 
 private
 
