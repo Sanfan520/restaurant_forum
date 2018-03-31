@@ -12,7 +12,7 @@
         <%# 到category index目錄%>
       </div>
     </br>
-    </div>
+
       <div>
         <%= link_to 'New Restaurant', new_admin_restaurant_path, class: "btn btn-primary" %>
       </div>
@@ -35,9 +35,9 @@
             <td>[<%= restaurant.category.name %>]</td><%#table head%>
             <td><%= restaurant.name %></td>
             <td>
-              <%= link_to 'Show', admin_restaurant_path(restaurant) %>
-              <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
-              <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"} %>
+              <%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, admin_restaurant_path(restaurant) %> &nbsp;
+              <%= link_to '<span class="glyphicon glyphicon-pencil">'.html_safe, edit_admin_restaurant_path(restaurant) %> &nbsp;
+              <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"} %>
             </td>
           </tr>
           <% end %>
