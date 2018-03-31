@@ -10,7 +10,7 @@
     <div class="form-inline">
       <%= form_for [:admin,@category] do |f| %>
        <div class="form-group">
-         <%=f.text_field :name, placeholder:"Category Name", class:"form-control"%>
+         <%=f.text_field :name, placeholder:"Enter category Name", class:"form-control"%>
        </div>
          <%=f.submit class: "btn btn-primary" %>
          <% if @category.errors.any? %>
@@ -35,6 +35,7 @@
             <tr><%#table row%>
               <th>#</th> <%#table head%>
               <th>Category Name</th>
+              <th>Action</th>
             </tr>
           </thread>
 
@@ -43,6 +44,10 @@
              <tr>
                <th scope="row"><%= category.id %></th>
                <td><%= category.name%></td>
+               <!-- 因為我們只有index.html.erb，所以這裡的edit我們加上params[:id]到url裡 -->
++              <!-- index 就能判斷是edit or new，而印出對應的form表單 -->
+               <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td>
+
              </tr>
              <% end %>
           </tbody>
