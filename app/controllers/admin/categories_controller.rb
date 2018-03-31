@@ -48,7 +48,12 @@ end
 #按下update的時候其實是觸發了另外一次的request,所以在controller裡面是看不到上一次的變數的，
 #故仍需輸入@category = Category.find(params[:id])
 
-
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:alert] = "category was sucessfully deleted"
+    redirect_to admin_categories_path
+  end
 private
 
  def category_params

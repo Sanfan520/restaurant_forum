@@ -46,8 +46,8 @@
                <td><%= category.name%></td>
                <!-- 因為我們只有index.html.erb，所以這裡的edit我們加上params[:id]到url裡 -->
 +              <!-- index 就能判斷是edit or new，而印出對應的form表單 -->
-               <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td>
-
+               <td><%= link_to 'Edit', admin_categories_path(id: category.id) %>
+                   <%= link_to 'Destroy',admin_category_path(category), method: :delete, data:{ confirm: "Are you sure?"} %></td>
              </tr>
              <% end %>
           </tbody>
@@ -56,5 +56,7 @@
     </div>
   </div>
 
+<!--# link_to 'Edit'  會有admin_categories_path 這一行會是複數的原因是因為他是導回到index頁面-->
+<!--#(承上)希望在點擊下去的時候，能把 category 的 id 拿回來做使用，所以會有 id: category.id 這段-->
 
 </div>
