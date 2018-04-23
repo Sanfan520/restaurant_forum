@@ -1,7 +1,5 @@
 class Admin::CategoriesController < ApplicationController
   #產生 Admin::CategoriesController 之後，請你立刻完成認證使用者權限的設定
-  before_action :authenticate_user!
-  #驗證請求進入後台的是否為已登入的 User
   before_action :authenticate_admin
   #驗證該 User 身份是否為網站管理員
   before_action :set_category, only:[:update, :destroy]

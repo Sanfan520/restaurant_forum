@@ -1,5 +1,4 @@
 class Admin::RestaurantsController < ApplicationController
-  before_action :authenticate_user!
   before_action :authenticate_admin
   before_action :set_restaurant, only: [:show, :edit, :update,:destroy]
 #總結:用Restaurant model將資料撈出來，並存到@restaurants變數中，把這變數塞進到index.html.erb頁面
