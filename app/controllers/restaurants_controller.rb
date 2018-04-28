@@ -1,17 +1,11 @@
 class RestaurantsController < ApplicationController
-  
-
-def index
-
-end
-end
 
 
-def index
-  @photos = Photo.all
-  set_photo
-end
+ def index
+  @restaurants = Restaurant.page(params[:page]).per(9)
+ end
 
-def set_photo
-  @photo = Photo.find(params[:id])
+ def show
+   @restaurant = Restaurant.find(params[:id])
+ end
 end

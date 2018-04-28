@@ -32,7 +32,7 @@
           <tr><%#table row%>
             <th scope="row"><%= restaurant.id %></th><%#table head%>
             <%#通過屬性值 row，表頭行包括的所有表格都將和表頭單元格聯繫起來。%>
-            <td>[<%= restaurant.category.name %>]</td><%#table head%>
+            <td>[<%= restaurant.category.name %>]</td><%#table head%> 
             <td><%= restaurant.name %></td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, admin_restaurant_path(restaurant) %> &nbsp;
