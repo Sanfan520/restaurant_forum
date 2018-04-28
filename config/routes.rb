@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
  #前台首頁
  resources :restaurants, only: [:index, :show]
+ resources :categories,only: :show
  root "restaurants#index"
 
 #後台功能:Restaurant CRUD & Categories CRUD以及後台首頁
