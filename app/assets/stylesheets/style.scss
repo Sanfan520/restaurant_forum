@@ -1,6 +1,19 @@
 body {
   background:image-url("sky.jpg");
   background-size:cover;
+
+}
+
+.nav-pills-center {
+  text-align: center;
+
+}
+
+/*-- CSS ">"代表直接的小孩,此代表為nav-pills-center底下的li--*/
+.nav-pills-center > li {
+  float: none;
+  display: inline-block;
+
 }
 
 h3 {color: red;
