@@ -16,7 +16,11 @@ body {
 
 }
 
-h3 {color: red;
+.nav-pills > li > a {
+  color: 	 #404040;
+}
+
+ h3 > a {color:  #cce0ff;
   }
 
 .restaurant-item {
@@ -24,6 +28,10 @@ h3 {color: red;
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
+}
+
+.restaurant-item > a{
+  color:inherit
 }
 
 .restaurant-item img {
