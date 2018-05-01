@@ -8,5 +8,6 @@ class RestaurantsController < ApplicationController
 
  def show
    @restaurant = Restaurant.find(params[:id])
+   @comment = Comment.new #輸入框有使用到 @comment
  end
 end

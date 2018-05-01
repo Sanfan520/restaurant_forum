@@ -31,9 +31,11 @@ class Admin::RestaurantsController < Admin::BaseController
     end
   end
 
+
 #總結 呼叫controller內show action,使用show 方法，檢視特定的一筆資料
    def show
   #被before_action取代:  @restaurant= Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
    end
 
    def edit
@@ -62,8 +64,6 @@ class Admin::RestaurantsController < Admin::BaseController
 
 
 
-
-
    private
 
    def restaurant_params
@@ -73,6 +73,7 @@ class Admin::RestaurantsController < Admin::BaseController
    def set_restaurant
     @restaurant= Restaurant.find(params[:id])
    end
+
 
 end
 #你必須將寫入參數的程序，從 new action 裡獨立出來，宣告成另一個私有方法。這裡依慣例命名為 restaurant_params。
