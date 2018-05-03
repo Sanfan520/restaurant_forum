@@ -6,7 +6,13 @@
     </div>
 
     <div class="col-md-4">
-      <%= image_tag @restaurant.image, class: "img-responsive center-block" %>
+<!--此部分改由下方程式碼取代      <%= image_tag @restaurant.image, class: "img-responsive center-block" %> -->
+   <% for img_id in 1..9 %>
+     <% if image_path(@restaurant.image).include?('/'+ img_id.to_s+'.jpg') %> <!--←由路徑判斷圖檔名-->
+     <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "img-responsive center-block") %> <!--←顯示路徑改為public裡面的圖檔 -->
+     <% end %>
+   <% end %>
+
       <br>
       <div class="well">
         <ul class="list-unstyled">
@@ -38,7 +44,7 @@
       <!--省略不寫f.submit後面的值，rails會自動判斷@comment是new或非new/既存，new的話顯示Create Comment,否則顯示Update Comment-->
       <%= f.submit class: "btn btn-primary" %>
       <!--使用 <button type="reset"> 可設定取消按鈕-->
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %> 
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
     </div>
   <% end %>
   </div>

@@ -11,7 +11,7 @@ namespace :dev do
       address: FFaker::Address.street_address,
       description: FFaker::Lorem.paragraph,
       category: Category.all.sample,
-      image: File.open(Rails.root.join("seed_img/#{rand(1..9)}.jpg"))
+      image: File.open(File.join(Rails.root,"/public/img/#{rand(1..9)}.jpg"))
       )
 
       #使用 sample 方法從集合中自動挑出一個項目回傳，在這裡回傳的會是一個 Category instance。
