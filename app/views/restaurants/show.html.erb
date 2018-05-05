@@ -8,7 +8,7 @@
     <div class="col-md-4">
 <!--此部分改由下方程式碼取代      <%= image_tag @restaurant.image, class: "img-responsive center-block" %> -->
    <% for img_id in 1..9 %>
-     <% if image_path(@restaurant.image).include?('/'+ img_id.to_s+'.jpg') %> <!--←由路徑判斷圖檔名-->
+     <% if image_path(@restaurant.image).include?('/'+img_id.to_s+'.jpg') %> <!--←由路徑判斷圖檔名-->
      <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "img-responsive center-block") %> <!--←顯示路徑改為public裡面的圖檔 -->
      <% end %>
    <% end %>
@@ -35,17 +35,29 @@
 
 <div class="container">
   <div class="row">
+    <!--顯示與餐廳相關的評論 -->
+    <% @restaurant.comments.each do |comment| %>
+      <div>
+       <h4><%= comment.user.email.split('@').first %></h4>
+       <p><%= simple_format comment.content %></p>
+       <p class="text-muted">
+         <em><%= time_ago_in_words(comment.created_at) %> ago -</em>>
+
+      </p>
+      <% end %>
+
+     <div>
     <!-- 新增評論的表單輸入框 -->
-   <%= form_for [@restaurant, @comment] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, placeholder: "Leave you message here", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <!--省略不寫f.submit後面的值，rails會自動判斷@comment是new或非new/既存，new的話顯示Create Comment,否則顯示Update Comment-->
-      <%= f.submit class: "btn btn-primary" %>
-      <!--使用 <button type="reset"> 可設定取消按鈕-->
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-    </div>
-  <% end %>
+      <%= form_for [@restaurant, @comment] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, placeholder: "Leave you message here", class: "form-control" %>
+        </div>
+       <div class="form-group">
+         <!--省略不寫f.submit後面的值，rails會自動判斷@comment是new或非new/既存，new的話顯示Create Comment,否則顯示Update Comment-->
+         <%= f.submit class: "btn btn-primary" %>
+         <!--使用 <button type="reset"> 可設定取消按鈕-->
+         <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+       </div>
+       <% end %>
   </div>
 </div>
