@@ -8,7 +8,7 @@ Rails.application.routes.draw do
    resources :comments, only: [:create, :destroy]
   end
 
-resources :comments,only: [:show, :edit, :update]
+resources :users, only: [:show, :edit, :update]
 
 
  resources :categories,only: :show
