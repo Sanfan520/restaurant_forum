@@ -4,6 +4,13 @@
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
+<!-- 增加 name 輸入框之後，需要讓 name 屬性通過 Strong Parameter 驗證，-->
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+
   <div class="field">
     <%= f.label :password, "New password" %><br />
     <% if @minimum_password_length %>
