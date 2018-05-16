@@ -38,7 +38,10 @@
     <!--顯示與餐廳相關的評論 -->
     <% @restaurant.comments.each do |comment| %>
       <div>
-       <h4><%= comment.user.email.split('@').first %></h4>
+  <!--   <%= comment.user.email.split('@').first %>   -->
+  <!--這個方法是用在當產生的假資料還沒有name屬性時，提取@前面的名字做為評論使用者名稱
+現在有新增假資料資料格式 name: user_name，故可被替代comment.user.name取代-->
+       <h4><%= comment.user.name %></h4>       
        <p><%= simple_format comment.content %></p>
        <p class="text-muted">
          <em><%= time_ago_in_words(comment.created_at) %> ago -</em>>
