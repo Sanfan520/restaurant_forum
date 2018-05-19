@@ -4,6 +4,9 @@ body {
 
 }
 
+.text-center img{
+  height: 156.67px;
+}
 .nav-pills-center {
   text-align: center;
 
@@ -42,3 +45,22 @@ body {
 .restaurant-item .caption {
   padding: 10px;
 }
+
+/* (section)user:show.html.erb --*/
+.restaurant-details{
+  display:inline-block;
+  text-align: center;
+}
+
+     /*.restaurants-details 底下的直接div*/
+.restaurant-details > div {
+  height: 80px;
+}
+
+.restaurant-details img{
+ height:100%;
+} /*div容器高度已設為80px,讓圖片高度100%,寬度會隨著高度做等比例的變化*?
+
+/*補充說明:
+img被div所包住;  restaurant-details的容器div被設定高度為80px
+後圖片又被.restaurant-details img設定為最高為容器的100%高度,所以就80px了*/
