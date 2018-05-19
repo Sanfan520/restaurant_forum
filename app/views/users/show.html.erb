@@ -29,13 +29,15 @@
             <div>
 
 
-            <% @commented_restaurants.each do |restaurant| %>          
+            <% @commented_restaurants.each do |restaurant| %>
+             <%= link_to(restaurant) do %>
                <div class="restaurant-details">
-                 <div>
+                <div>
                   <%= image_tag restaurant.image, class: "img-responsive img-rounded"%>
                 </div>
                 <h5><%= restaurant.name %></h5>
                </div>
+             <%end%>
             <%end%>
 
             </div>
