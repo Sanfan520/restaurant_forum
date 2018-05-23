@@ -64,3 +64,17 @@ body {
 /*補充說明:
 img被div所包住;  restaurant-details的容器div被設定高度為80px
 後圖片又被.restaurant-details img設定為最高為容器的100%高度,所以就80px了*/
+
+/*feeds.html.erb page*/
+.nav-tabs {
+background:transparent;
+}
+
+.nav > li > a {
+  color:  #000000;
+}
+
+.nav-tabs > li > a:hover{
+  background:transparent;
+  border-color:none;
+}

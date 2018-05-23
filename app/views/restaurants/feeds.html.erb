@@ -1,3 +1,8 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" ><%= link_to "Home",root_path%></li>
+  <li role="presentation" class="active"><%= link_to "Lastest news",feeds_restaurants_path %></li>
+</ul>
+
 <h1>Latest update for restaurants</h1>
 
 <div>
@@ -12,9 +17,9 @@
 <div>
   <h3>Recent added comments for restaurants</h3>
   <% @recent_comments.each do |comment| %>
-  <h4><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant)%></h4>
+  <h4><%= link_to comment.restaurant.name, restaurant_path(id:comment.restaurant.id)%></h4>
   <p><%= comment.content%> </p>
-  <p>by <%= link_to comment.user.name, user_path(comment.user)%></p>
+  <p>by <%= link_to comment.user.name, user_path(id:comment.user.id)%></p>
   <hr>
   <%end%>
 </div>
