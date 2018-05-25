@@ -46,9 +46,16 @@ end
   def destroy
     #@category  = Category.find(params[:id]) => 被set_category取代
     @category.destroy
-    flash[:alert] = "category was sucessfully deleted"
+    if @category.errors
+      flash[:alert] = @category.errors.full_messages.to_sentence
+    else
+      flash[:notice] = "category was sucessfully deleted"
+    end
     redirect_to admin_categories_path
   end
+
+
+
 private
 
  def category_params
