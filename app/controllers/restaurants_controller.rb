@@ -17,4 +17,8 @@ class RestaurantsController < ApplicationController
    @recent_comments = Comment.order(created_at: :desc).limit(10)#最新建立的 10 筆評論 - @recent_comments
   end
 
+  def dashboard
+    @restaurant = Restaurant.find(params[:id])
+  end
+
 end
