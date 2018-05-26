@@ -1,25 +1,47 @@
-<ul class="nav nav-tabs">
-  <li role="presentation" ><%= link_to "Home",root_path%></li>
-  <li role="presentation" class="active"><%= link_to "Lastest news",feeds_restaurants_path %></li>
-</ul>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" ><%= link_to "Home",root_path%></li>
+      <li role="presentation" class="active"><%= link_to "Lastest news",feeds_restaurants_path %></li>
+    </ul>
+  </div>
 
-<h1>Latest update for restaurants</h1>
 
-<div>
-  <h3>Recent added restaurants</h3>
-   <% @recent_restaurants.each do |restaurant| %>
-   <%= link_to restaurant.name , restaurant_path(restaurant)%>
-   <%= restaurant.category.name%>
-   <%= restaurant.description%>
-   <%end%>
-</div>
+  <div class="container">
+    <div class="row">
+     <div class="col-md-10 col-md-offset-1">
+      <h1 class="intro">Feeds for restaurant</h1>
 
-<div>
-  <h3>Recent added comments for restaurants</h3>
-  <% @recent_comments.each do |comment| %>
-  <h4><%= link_to comment.restaurant.name, restaurant_path(id:comment.restaurant.id)%></h4>
-  <p><%= comment.content%> </p>
-  <p>by <%= link_to comment.user.name, user_path(id:comment.user.id)%></p>
-  <hr>
-  <%end%>
+      <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Recent added restaurants</div>
+         <div class="panel-body">
+             <% @recent_restaurants.each do |restaurant| %>
+             <h4><%= link_to restaurant.name , restaurant_path(restaurant)%>
+             <small><%= restaurant.category.name%></small>
+             <h4>
+             <p><%= truncate(restaurant.description, length: 100)%></p>
+             <hr>
+             <%end%>
+         </div>
+       </div>
+     </div>
+
+
+       <div class="col-md-6">
+       <div class="panel panel-default">
+          <div class="panel-heading">Recent added comments for restaurants</div>
+          <div class="panel-body">
+              <% @recent_comments.each do |comment| %>
+              <h4><%= link_to comment.restaurant.name, restaurant_path(id:comment.restaurant.id)%></h4>
+              <p><%= truncate(comment.content, length: 80) %>
+              <p>by <%= link_to comment.user.name, user_path(id:comment.user.id)%></p>
+              <hr>
+              <%end%>
+          </div>
+        </div>
+        </div>
+
+    </div>
+  </div>
 </div>
