@@ -4,7 +4,9 @@ namespace :dev do
 #沒有加enviroment將只能在rake內寫普通的ruby
  task fake_restaurant: :environment do
    Restaurant.destroy_all #清除舊資料
+   User.destroy_all
    Comment.destroy_all
+
 
 
    50.times do |i|
