@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :name
-  mount_uploader :avatar, AvatarUploaders
+  mount_uploader :avatar, AvatarUploader
 
   def admin?
     self.role == "admin"

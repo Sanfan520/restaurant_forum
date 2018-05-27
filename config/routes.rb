@@ -4,21 +4,26 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
  #前台首頁
-  resources :restaurants, only: [:index, :show] do
+resources :restaurants, only: [:index, :show] do
+
    resources :comments, only: [:create, :destroy]
 
+  # 瀏覽所有餐廳的最新動態
+  # GET restaurants/feeds
    collection do
-     # 瀏覽所有餐廳的最新動態
-     # GET restaurants/feeds
      get :feeds
    end
 
     member do
-     # 瀏覽個別餐廳的 Dashboard
-     # GET restaurants/:id/dashboard
+    # 瀏覽個別餐廳的 Dashboard
+    # GET restaurants/:id/dashboard
      get :dashboard
+
+    # 收藏 / 取消收藏
+     post :favorite
+     post :unfavorite
     end
-  end
+end
 
   resources :users, only: [:show, :edit, :update]
   resources :categories,only: :show
