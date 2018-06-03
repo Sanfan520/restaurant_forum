@@ -17,6 +17,9 @@ class Restaurant < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users,through: :favorites, source: :user
 
+#在 Model 裡撰寫 instance method，製作可重覆使用的方法
+#檢查收藏紀錄是否存在：is_favorited?當你手上有一個 Restaurant 物件，以及一個 User 物件時，
+#在 favorites table 上查詢，看看是否有一筆資料，其外鍵 restaurant_id 和 user_id 都符合條件。
   def is_favorited?(user)
     self.favorited_users.include?(user) #self 來代表 instance(@restaurant) 本身
   end
