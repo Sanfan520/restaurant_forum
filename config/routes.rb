@@ -8,10 +8,14 @@ resources :restaurants, only: [:index, :show] do
 
    resources :comments, only: [:create, :destroy]
 
-  # 瀏覽所有餐廳的最新動態
-  # GET restaurants/feeds
+
    collection do
+     # 瀏覽所有餐廳的最新動態
+     # GET restaurants/feeds
      get :feeds
+
+     #十大人氣餐廳
+     get :ranking
    end
 
     member do
@@ -25,6 +29,7 @@ resources :restaurants, only: [:index, :show] do
     #like /unlike
      post :like
      post :unlike
+
     end
 end
 
