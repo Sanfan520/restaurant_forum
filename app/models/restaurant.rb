@@ -27,8 +27,8 @@ class Restaurant < ApplicationRecord
     self.favorited_users.include?(user) #self 來代表 instance(@restaurant) 本身
   end
 
-  def is_liked?(user)
-    self.liked_users.include?(user) #self 來代表 instance(@restaurant) 本身
+  def count_favorites
+    self.favorites_count = self.favorites.size
+    self.save
   end
-
 end
