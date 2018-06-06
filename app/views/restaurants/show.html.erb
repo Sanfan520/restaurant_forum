@@ -6,13 +6,14 @@
     </div>
 
     <div class="col-md-4">
-<!--此部分改由下方程式碼取代      <%= image_tag @restaurant.image, class: "img-responsive center-block" %> -->
+      <%= image_tag @restaurant.image, class: "img-responsive center-block" %>
+<!--此部分改由上方程式碼取代
    <% for img_id in 1..9 %>
-     <% if image_path(@restaurant.image).include?('/'+img_id.to_s+'.jpg') %> <!--←由路徑判斷圖檔名-->
-     <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "img-responsive center-block") %> <!--←顯示路徑改為public裡面的圖檔 -->
+     <% if image_path(@restaurant.image).include?('/'+img_id.to_s+'.jpg') %> 由路徑判斷圖檔名
+     <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "img-responsive center-block") %> 顯示路徑改為public裡面的圖檔
      <% end %>
    <% end %>
-
+-->
       <br>
       <div class="well">
         <ul class="list-unstyled">

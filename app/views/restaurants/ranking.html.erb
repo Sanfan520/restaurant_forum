@@ -1,0 +1,10 @@
+<h1>Top 10 Restaurants<small> With the greatest amount of favorites</small></h1>
+
+<% @restaurants.each do |restaurant| %>
+<%= image_tag restaurant.image %>
+<h4><<%= restaurant.name %></h4>
+<span>Amounts of favorites: <%=restaurant.favorites_count %></span>
+<p><%= truncate(restaurant.description, length: 200)%></p>
+   <%= link_to "Show", restaurant_path(restaurant), class: "btn btn-primary" %>
+   <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
+<% end %>

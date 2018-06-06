@@ -38,6 +38,8 @@ class RestaurantsController < ApplicationController
      redirect_back(fallback_location: root_path)#導回上一頁
    end
 
-   
+   def ranking
+     @restaurants = Restaurant.order(favorites_count: :desc).limit(10)
+   end
 
 end
