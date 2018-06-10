@@ -25,7 +25,6 @@ class RestaurantsController < ApplicationController
   def favorite
     @restaurant = Restaurant.find(params[:id]) #依params[:id]確認物件
     @restaurant.favorites.create!(user: current_user)#在favorites資料表上建立一筆新紀錄，並寫入restaurant_id 和user_id
-    @restaurant.count_favorites
     redirect_back(fallback_location: root_path)#導回上一頁
   end
 
@@ -34,7 +33,6 @@ class RestaurantsController < ApplicationController
      @restaurant = Restaurant.find(params[:id]) #依 params[:id]確認餐廳物件
      favorites = Favorite.where(restaurant: @restaurant, user: current_user)#根據餐廳物件和current_user 查詢出favorites 資料表的紀錄
      favorites.destroy_all##將相關的紀錄刪除
-     @restaurant.count_favorites
      redirect_back(fallback_location: root_path)#導回上一頁
    end
 
