@@ -1,7 +1,6 @@
 body {
-  background:image-url("sky.jpg");
-  background-size:cover;
-
+    background-image: url("sky.jpg");
+    background-size:cover;
 }
 
 .text-center img{
@@ -79,4 +78,8 @@ background:transparent;
 .nav-tabs > li > a:hover{
   background:transparent;
   border-color:none;
+}
+
+.ranking-item{
+  margin-bottom: 18px;
 }
