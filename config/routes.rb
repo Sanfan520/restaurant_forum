@@ -29,9 +29,11 @@ resources :restaurants, only: [:index, :show] do
     end
 end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :categories,only: :show
   root "restaurants#index"
+
+  resources :followships, only: [:create, :destroy]
 
 #後台功能:Restaurant CRUD & Categories CRUD以及後台首頁
 namespace :admin do
