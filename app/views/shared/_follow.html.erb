@@ -1,0 +1,10 @@
+<% if user != current_user %>
+  <% if current_user.following?(user) %>
+     <%= link_to 'Unfollow',followship_path(user),method: :delete %>
+     <!--上面 followship_path(user) 省略了 followship_path(id: user.id)-->
+  <% else %>
+     <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+     <%= link_to 'Follow',followships_path(following_id: user),method: :post %>
+     <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+  <% end %>
+<%end%>
