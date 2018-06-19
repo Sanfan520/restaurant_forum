@@ -1,8 +1,41 @@
-<ul>
+<div class="container">
+ <div class="row">
+  <ul class="nav nav-tabs">
+    <li role="presentation">
+       <%= link_to "Homepage" ,root_path %>
+    </li>
+    <li role="presentation">
+       <%= link_to "Feeds",feeds_restaurants_path%>
+    </li>
+    <li role="presentation">
+       <%= link_to "Top 10 Restaurants",ranking_restaurants_path%>
+    </li>
+    <li role="presentation" class="active">
+      <%= link_to "Gourmet",users_path%>
+    </li>
+  </ul>
+ </div>
+<div>
+
+<div class="container">
+ <div class="row">
+
+  <div class="col-md-12">
+    <div class="page-header text-center">
+      <h1> Gourmet </h1>
+    </div>
+  </div>
+
  <% @users.each do |user| %>
-   <li>
-     <%= user.name %>
-     <%= render partial: "shared/follow", locals: {user: user} %>
-   </li>
+  <div class="col-md-3 col-sm-4 col-xd-6 text-center user-item">
+    <%= link_to user_path(user) do%>
+    <!-- 可先利用 Placeholder 如 <img src="http://via.placeholder.com/128x128"> 產生圖片 -->
+    <%=image_tag(src="http://via.placeholder.com/128x128", class: "img-rounded") %>
+    <h4><%= user.name%></h4>
+    <% end %>
+    <%= render partial: "shared/follow", locals: {user: user} %>
+  </div>
  <% end %>
-</ul>
+
+ </div>
+</div>
