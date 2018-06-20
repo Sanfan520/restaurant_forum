@@ -29,8 +29,11 @@
  <% @users.each do |user| %>
   <div class="col-md-3 col-sm-4 col-xd-6 text-center user-item">
     <%= link_to user_path(user) do%>
-    <!-- 可先利用 Placeholder 如 <img src="http://via.placeholder.com/128x128"> 產生圖片 -->
-    <%=image_tag(src="http://via.placeholder.com/128x128", class: "img-rounded") %>
+    <% for img_id in 1..7 %>
+        <% if image_path(user.avatar).include? ('/'+img_id.to_s+'.png') %>
+            <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive center-block img-rounded img") %>
+        <% end %>
+    <% end %>
     <h4><%= user.name%></h4>
     <% end %>
     <%= render partial: "shared/follow", locals: {user: user} %>

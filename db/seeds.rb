@@ -30,7 +30,15 @@ end
 
 puts "Category created!"
 
-
 # Default admin
-User.create(email: "sandy@gmail.com", password:"123456", role: "admin", name: "root")
+User.destroy_all
+
+User.create!(
+  name: "Sandy",
+  email: "sandy@gmail.com",
+  password:"123456",
+  role: "admin",
+  intro: "my name is sandy and i was born in taiwan in 1980, and I used to be a teacher ten years ago",
+  avatar: File.open(File.join(Rails.root, "/public/img/3.png"))
+  )
 puts "Default admin created"

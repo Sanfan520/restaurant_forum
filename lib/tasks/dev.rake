@@ -4,7 +4,6 @@ namespace :dev do
 #沒有加enviroment將只能在rake內寫普通的ruby
  task fake_restaurant: :environment do
    Restaurant.destroy_all #清除舊資料
-   User.destroy_all
    Comment.destroy_all
 
 
@@ -32,9 +31,11 @@ namespace :dev do
     20.times do |i|
       user_name = FFaker::Name.first_name
       User.create!(
-      name: user_name,
+      name: "#{user_name}",
       email: "#{user_name}@yahoo.com.tw",
-      password: "123456"
+      intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam",
+      password: "123456",
+      avatar: File.open(File.join(Rails.root,"/public/img/#{rand(1..7)}.png"))
       )
     end
     puts "have created fake users"
