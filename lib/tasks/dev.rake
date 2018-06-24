@@ -56,4 +56,16 @@ end
    puts "now you have #{Comment.count} comment data"
   end
 
+  task fake_user_following: :environment do
+     User.all.each do |user|
+      @users = User.where.not(id: user.id).shuffle  #where.not確保不會自己加自己好友
+      5.times do
+       user.followships.create!(
+        following: @users.pop,
+       )
+      end
+  end
+  puts "have created user_following"
+  puts "user successfully follow other 5 users"
+  end
 end

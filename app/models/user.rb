@@ -21,18 +21,17 @@ class User < ApplicationRecord
   # 由於使用 restaurants 會和「使用者評論很多餐廳」重覆，將關聯名稱自訂為 :favorited_restaurants
   # 自訂名稱後，Rails 無法自動推論來源名稱，需另加 source 告知 model name
   has_many :favorites, dependent: :destroy
-  has_many :favorites_restaurants, through: :favorites, source: :restaurant
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
 
-  has_many :likes, dependent: :destroy
-  has_many :liked_restaurants, through: :like, source: :restaurant
+# 「使用者追蹤使用者」的 self-referential relationships 設定
+# 不需要另加 source，Rails 可從 Followship Model 設定來判斷 followings 指向 User Model
+  has_many :followships, dependent: :destroy #先在 followships 上找出一整列的追蹤紀錄
+  has_many :followings, through: :followships #再從追蹤紀錄查出個別欄位(user_id)，按外鍵名稱回到 users 上依序取出使用者
 
-  has_many :followships, dependent: :destroy
-  has_many :followings, through: :followships
-
-# 「使用者的追蹤者」的設定
+#「使用者的追蹤者」的設定
  # 透過 class_name, foreign_key 的自訂，指向 Followship 表上的另一側
-  has_many :inverse_followships, class_name: "Followships", foreign_key :"following_id"
-  has_many :followers, through: :inverse_followships, source: :user
+ has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id" #先在 followships 上找出一整列的追蹤紀錄
+ has_many :followers, through: :inverse_followships, source: :user#再從追蹤紀錄查出個別欄位(following_id)，按外鍵名稱回到 users 上依序取出使用者
 
   def following?(user)
     self.followings.include?(user)
