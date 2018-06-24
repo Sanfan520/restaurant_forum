@@ -7,8 +7,9 @@ class UsersController < ApplicationController
 
   def show
     @commented_restaurants = @user.commented_restaurants.uniq
-    @favorited_restaurants =@user.favorited_restaurants
+    @favorited_restaurants = @user.favorited_restaurants
     @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit

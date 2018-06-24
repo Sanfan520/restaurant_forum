@@ -29,27 +29,44 @@
            <br>
 
            <div class="col-md-4">
-             <!-- 顯示followings的清單，panel包一個list-group  -->
-             <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><strong><%= @followings.count %> followings</strong></h3>
+                <!-- 顯示followings的清單，panel包一個list-group  -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><strong><%= @followings.count %> followings</strong></h3>
+                    </div>
+
+                    <ul class="list-group">
+                      <% @followings.each do |following| %>
+                         <li class= "list-group-item">
+                             <%= link_to user_path(following) do %>
+                             <%= image_tag(following.avatar, height: 30,width: 30,class: "img-circle") %>
+                             <%= following.name %>
+                             <% end %>
+                         </li>
+                      <%end%>
+                    </ul>
                 </div>
 
-                <div class="panel-body">
-                  <div>
-                   <% @followings.each do |following| %>
-            <li class= "list-group-item">
-                <%= link_to user_path(following) do %>
-                <%= image_tag(following.avatar, height: 30,width: 30,class: "img-circle") %>
-                <%= following.name %>
-                <% end %>
-            </li>
+
+                <!-- 顯示followers的清單，panel包一個list-group  -->
+                <div class="panel panel-default">
+                   <div class="panel-heading">
+                     <h3 class="panel-title"><strong><%= @followers.count %> followers</strong></h3>
+                   </div>
+
+                  <ul class="list-group">
+                   <% @followers.each do |follower| %>
+                      <li class= "list-group-item">
+                          <%= link_to user_path(follower) do %>
+                          <%= image_tag(follower.avatar, height: 30,width: 30,class: "img-circle") %>
+                          <%= follower.name %>
+                          <% end %>
+                      </li>
                    <%end%>
-                  </div>
+                  </ul>
                 </div>
             </div>
-            <div class="clearfix"></div>
-          </div>
+
 
 
 
@@ -77,7 +94,7 @@
                  </div>
                </div>
           </div>
-          
+
          <br>
     </div>
   </div>
