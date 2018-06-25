@@ -34,6 +34,7 @@ end
   root "restaurants#index"
 
   resources :followships, only: [:create, :destroy]
+  
 
 #後台功能:Restaurant CRUD & Categories CRUD以及後台首頁
 namespace :admin do

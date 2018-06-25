@@ -31,7 +31,19 @@ class User < ApplicationRecord
 #「使用者的追蹤者」的設定
  # 透過 class_name, foreign_key 的自訂，指向 Followship 表上的另一側
  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id" #先在 followships 上找出一整列的追蹤紀錄
- has_many :followers, through: :inverse_followships, source: :user#再從追蹤紀錄查出個別欄位(following_id)，按外鍵名稱回到 users 上依序取出使用者
+ has_many :followers, through: :inverse_followships, source: :user#有了前面追蹤紀錄、following_id，再從追蹤紀錄上找user_id欄位，按外鍵名稱回到 users 上依序取出使用者
+
+#使用者有很多朋友的多對多關聯
+ has_many :friendships, class_name: "Friendship", primary_key: "id", foreign_key: "user_id"
+ has_many :friends, through: :friendships
+
+#使用者加好友的人
+ has_many :friendships, dependent: :destory
+ has_many :friends, through: :friendships
+
+#加使用者好友的人
+ has_many :inverse_friendships, class_name: "Friendship",foreign_key: "friend_id" #在friendships table上，透過friend_id，找出加user為好友的整列關係
+ has_many :friend_requestors, through: :inverse_friendships, source: :user  #用friend_id找回要加user為好友的人
 
   def following?(user)
     self.followings.include?(user)
