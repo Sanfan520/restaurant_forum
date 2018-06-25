@@ -38,12 +38,10 @@ class User < ApplicationRecord
  has_many :friends, through: :friendships
 
 #使用者加好友的人
- has_many :friendships, dependent: :destory
+ has_many :friendships, dependent: :destroy
  has_many :friends, through: :friendships
 
-#加使用者好友的人
- has_many :inverse_friendships, class_name: "Friendship",foreign_key: "friend_id" #在friendships table上，透過friend_id，找出加user為好友的整列關係
- has_many :friend_requestors, through: :inverse_friendships, source: :user  #用friend_id找回要加user為好友的人
+
 
   def following?(user)
     self.followings.include?(user)
