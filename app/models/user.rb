@@ -34,10 +34,13 @@ class User < ApplicationRecord
  has_many :followers, through: :inverse_followships, source: :user#有了前面追蹤紀錄、following_id，再從追蹤紀錄上找user_id欄位，按外鍵名稱回到 users 上依序取出使用者
 
 #使用者有很多朋友的多對多關聯
- has_many :friendships, class_name: "Friendship", primary_key: "id", foreign_key: "user_id"
+ has_many :friendships, class_name: "Friendship", primary_key: "id", foreign_key: "user_id", dependent: :destroy
+ #destroy 代表的是當刪除user, 該user擁有的friendship會一起刪除
  has_many :friends, through: :friendships
 
-
+ #加使用者好友的人
+  has_many :inverse_friends, class_name: "Friendship", primary_key: "id", foreign_key: "friend_id"  #找出friendship中使用者被設為friend_id的追蹤紀錄
+  has_many :requestor_friends, through: :inverse_friends, source: :user
 
 
 
