@@ -39,8 +39,8 @@ class User < ApplicationRecord
  has_many :friends, through: :friendships
 
  #加使用者好友的人
-  has_many :inverse_friends, class_name: "Friendship", primary_key: "id", foreign_key: "friend_id"  #找出friendship中使用者被設為friend_id的追蹤紀錄
-  has_many :requestor_friends, through: :inverse_friends, source: :user
+  has_many :inverse_friendships, class_name: "Friendship", primary_key: "id", foreign_key: "friend_id"  #找出friendship中使用者被設為friend_id的追蹤紀錄
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
 
 
 
@@ -51,5 +51,6 @@ class User < ApplicationRecord
   def friend?(user)
     self.friends.include?(user)
   end
+
 
 end
