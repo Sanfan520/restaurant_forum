@@ -37,13 +37,16 @@ class User < ApplicationRecord
  has_many :friendships, class_name: "Friendship", primary_key: "id", foreign_key: "user_id"
  has_many :friends, through: :friendships
 
-#使用者加好友的人
- has_many :friendships, dependent: :destroy
- has_many :friends, through: :friendships
+
 
 
 
   def following?(user)
-    self.followings.include?(user)
+    self.followings.include?(user) #self 來代表 instance 本身，並使用關聯方法 self.favorited_users 查出該餐廳物件相關的所有 User 紀錄。
   end
+
+  def friend?(user)
+    self.friends.include?(user)
+  end
+
 end

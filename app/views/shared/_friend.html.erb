@@ -1,0 +1,7 @@
+<% if current_user != user%> <!--如果current_user不是user才會顯示出friend or unfriend 按鈕-->
+  <% if current_user.friend?(user)%><!--current_user 已加好友，則刪除好友-->
+    <%= link_to "Unfriend" ,friendship_path(user),method: :delete, class: "btn btn-info"%>
+  <% else %> <!--current_user 未加好友，則加好友-->
+    <%= link_to "Friend" ,friendships_path(friend_id: user),method: :post, class: "btn btn-default" %>
+  <%end%>
+<%end%>
