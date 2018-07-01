@@ -29,7 +29,13 @@ resources :restaurants, only: [:index, :show] do
     end
 end
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get :friend_list
+    end
+  end
+
+
   resources :categories,only: :show
   root "restaurants#index"
 

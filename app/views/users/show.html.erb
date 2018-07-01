@@ -17,12 +17,13 @@
              <li><strong><%= @favorited_restaurants.count %></strong> 收藏的餐廳</li>
              <li><strong><%= @followings.count %></strong> followings</li>
              <li><strong><%= @followers.count %></strong> followers</li>
-          </ul>
+              </ul>
               <div><%= simple_format @user.intro %></div>
               <% if @user.email == current_user.email %>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+                <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+                <%= link_to 'My Friends', friend_list_user_path(@user),class: "btn btn-primary" %>
               <% end %>
-            </div>
+              </div>
             <div class="clearfix"></div>
           </div>
 
@@ -67,13 +68,12 @@
                 </div>
             </div>
 
-
           <div class="col-md-8">
         <!-- 顯示收藏的餐廳的清單，panel包一個panel-body裡面簡單顯示餐廳圖片和name -->
                <div class="panel panel-default">
                   <div class="panel-heading">
-            <h3 class="panel-title"><strong><%= @commented_restaurants.count %> commented restaurants</strong></h3>
-          </div>
+                    <h3 class="panel-title"><strong><%= @commented_restaurants.count %> commented restaurants</strong></h3>
+                  </div>
 
                   <div class="panel-body">
                    <div>
