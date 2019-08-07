@@ -14,15 +14,15 @@
         <div class="caption">
           <h3><%= link_to restaurant.name,restaurant_path(restaurant) %></h3>
           <p class="label label-default"><%= restaurant.category.name %><p>
-          <p><%=truncate(restaurant.description, length: 80) %></p>
+          <p class="content"><%=truncate(restaurant.description, length: 60) %></p>
           <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
-        
+
         </div>
     </div>
    </div>
    <% end %>
 
     <!-- 有generate kaminari paginate bootstrap style -->
-    <div class="text-center">
+    <div class="text-center col-sm-12 col-md-12">
       <%= paginate @restaurants %>
     </div>

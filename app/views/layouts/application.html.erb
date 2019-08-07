@@ -10,6 +10,7 @@
 
  <body>
    <div class="wrapper">
+
        <!-- Navbar  -->
        <nav class="navbar-default">
          <div class="container-fluid">
@@ -47,22 +48,29 @@
        </nav>
 
        <!--use Alert components for flash -->
-         <% if flash[:notice] %>
-              <!--讓 Flash message 出現右上角取消按鈕-->
-                 <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <%= notice %>
-              </div>
-          <% end %>
+       <div class="content-details">  <!--讓overlay_2有父元素定位 讓背景變暗-->
+         <div class="overlay_2"></div>
 
-          <% if flash[:alert] %>
-              <!--讓 Flash message 出現右上角取消按鈕-->
-                 <div class="alert alert-danger alert-dismissible" role="alert">
-                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                 <%= alert %>
-                 </div>
-          <% end %>
-          <%= yield %>
+             <% if flash[:notice] %>
+                  <!--讓 Flash message 出現右上角取消按鈕-->
+                     <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <%= notice %>
+                  </div>
+              <% end %>
+
+
+              <% if flash[:alert] %>
+                  <!--讓 Flash message 出現右上角取消按鈕-->
+                     <div class="alert alert-danger alert-dismissible" role="alert">
+                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <%= alert %>
+                     </div>
+              <% end %>
+
+              <%= yield %>
+
+        </div>
    </div>
  </body>
 

@@ -11,7 +11,7 @@
        <%= link_to "Top 10 Restaurants",ranking_restaurants_path%>
     </li>
     <li role="presentation" class="active">
-      <%= link_to "Gourmet",users_path%>
+      <%= link_to "Foodies",users_path%>
     </li>
   </ul>
  </div>
@@ -22,22 +22,24 @@
 
   <div class="col-md-12">
     <div class="page-header text-center">
-      <h1> Gourmet </h1>
+      <h1> Foodies </h1>
     </div>
   </div>
 
  <% @users.each do |user| %>
   <div class="col-md-3 col-sm-4 col-xd-6 text-center user-item">
-    <%= link_to user_path(user) do%>
-    <% for img_id in 1..7 %>
-        <% if image_path(user.avatar).include? ('/'+img_id.to_s+'.png') %>
-            <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive center-block img-rounded img") %>
+    <div class="foodies_background">
+        <%= link_to user_path(user) do%>
+        <% for img_id in 1..7 %>
+            <% if image_path(user.avatar).include? ('/'+img_id.to_s+'.png') %>
+                <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive center-block img-rounded img") %>
+            <% end %>
         <% end %>
-    <% end %>
-    <h4><%= user.name%></h4>
-    <% end %>
-    <%= render partial: "shared/follow", locals: {user: user} %>
-    <%= render partial: "shared/friend", locals: {user: user} %>
+        <h4><%= user.name%></h4>
+        <% end %>
+        <%= render partial: "shared/follow", locals: {user: user} %>
+        <%= render partial: "shared/friend", locals: {user: user} %>
+    </div>
   </div>
  <% end %>
 

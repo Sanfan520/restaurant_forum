@@ -1,26 +1,27 @@
 <%#  幫助使用者了解為何被退回，我們需要讀取 @restaurant.errors 的內容，引導使用者再次進行修改。 %>
- <div class="container">
-   <div class="row">
-
-     <% if @restaurant.errors.any? %>
-       <h4>We have some errors here !</h4>
-       <ul>
-         <% @restaurant.errors.full_messages.each do |msg| %>
-           <li><%= msg %></li>
-         <% end %>
-       </ul>
-       <hr>
-    <% end %>
+<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
+    <div class="block">
+       <div class="container">
+            <% if @restaurant.errors.any? %>
+              <h4>We have some errors here !</h4>
+              <ul>
+                <% @restaurant.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+              <hr>
+           <% end %>
 
 <%#  之前我們在設定 Routes 時，使用一個名為 admin 的 namespace 來設定後台的資源，
 因此，你需要在 form_for 後面用中括號標示 [:admin, @restaurant]，
 來告訴 Rails 要去 namespace 找到相對應的路徑。%>
-   <%= form_for [:admin, @restaurant] do |f| %>
+         <div >
+              <%= form_for [:admin, @restaurant] do |f| %>
 
-      <div class="form-group">
-        <%= f.label :category %>
-        <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: "form-control"} %>
-      </div>
+                 <div class="form-group">
+                   <%= f.label :category %>
+                   <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+                 </div>
 <%#collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
 #collection_selcect前五個屬性是必要的 :指定要操作的方法, 指定特定物件集合來產生 <option> 標籤, 呼叫 Category 的特定方法，來產生 <option value=?> 的值,呼叫 Category 的特定方法，來產生 <option value=?> 的文字內容
 #第六個 第七個屬性可省略不寫，保留大括號{},{}即可
@@ -28,42 +29,44 @@
 #由於在 form_for 的設定裡，已經傳入了實例變數 @restaurant，所以第一個參數 object 不需要再重複傳入，然而，需要在 collection_select 前加上「f.」
 #prompt: ture 預設選項會跑出「please select」,也可以設定 prompt: "選我選我" 帶入要顯示的字串%>
 
-      <div class="form-group">
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
+                 <div class="form-group">
+                  <%= f.label :name, "Name" %>
+                  <%= f.text_field :name, class: "form-control" %>
+                </div>
 
-      <div class="form-group">
-        <%= f.label :tel, "Tel" %>
-        <%= f.text_field :tel, class: "form-control" %>
-      </div>
+                 <div class="form-group">
+                   <%= f.label :tel, "Tel" %>
+                   <%= f.text_field :tel, class: "form-control" %>
+                 </div>
 
-      <div class="form-group">
-        <%= f.label :address, "Address" %>
-        <%= f.text_field :address, class: "form-control" %>
-      </div>
+                 <div class="form-group">
+                   <%= f.label :address, "Address" %>
+                   <%= f.text_field :address, class: "form-control" %>
+                 </div>
 
-      <div class="form-group">
-        <%= f.label :opening_hours, "Opening Hours" %>
-        <%= f.text_field :opening_hours, class: "form-control" %>
-      </div>
+                 <div class="form-group">
+                  <%= f.label :opening_hours, "Opening Hours" %>
+                  <%= f.text_field :opening_hours, class: "form-control" %>
+                </div>
 
-      <div class="form-group">
-        <%= f.label :description, "Description" %>
-        <%= f.text_area :description, class: "form-control" %>
-      </div>
+                 <div class="form-group">
+                  <%= f.label :description, "Description" %>
+                  <%= f.text_area :description, class: "form-control" %>
+                </div>
 
-      <div class="form-group">
-        <%= f.label :image, "Photo" %>
-        <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
-        <%= f.file_field :image %>
-      </div>
+                 <div class="form-group">
+                   <%= f.label :image, "Photo" %>
+                   <br />
+                   <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+                   <%= f.file_field :image %>
+                 </div>
 
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
+                 <div class="form-group">
+                   <%= f.submit class: "btn btn-primary" %>
+                 </div>
+             <% end %>
+       <%##@restaurant.image? - 查看該餐廳物件的 image 屬性是否有攜帶內容，有則回傳 True，
+       沒有則回傳 False。（ Rails 裡所有的物件屬性都會自動帶有「attribute_name?」這樣的方法） %>
+          </div>
       </div>
-    <% end %>
-<%##@restaurant.image? - 查看該餐廳物件的 image 屬性是否有攜帶內容，有則回傳 True，
-沒有則回傳 False。（ Rails 裡所有的物件屬性都會自動帶有「attribute_name?」這樣的方法） %>
-   </div>
-+</div>
+  </div>

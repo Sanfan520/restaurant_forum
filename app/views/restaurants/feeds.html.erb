@@ -4,7 +4,7 @@
       <li role="presentation" ><%= link_to "Home",root_path%></li>
       <li role="presentation" class="active"><%= link_to "Lastest news",feeds_restaurants_path %></li>
       <li role="presentation" ><%= link_to "Top 10 Restaurants",ranking_restaurants_path%></li>
-      <li role="presentation" ><%= link_to "Gourmet",users_path%></li>
+      <li role="presentation" ><%= link_to "Foodies",users_path%></li>
     </ul>
   </div>
 
@@ -19,7 +19,7 @@
         <div class="panel-heading">Recent added restaurants</div>
          <div class="panel-body">
              <% @recent_restaurants.each do |restaurant| %>
-             <h4><%= link_to restaurant.name , restaurant_path(restaurant)%>
+             <h4 class="restaurant_name"><%= link_to restaurant.name , restaurant_path(restaurant)%>
              <small><%= restaurant.category.name%></small>
              <h4>
              <p><%= truncate(restaurant.description, length: 100)%></p>
@@ -35,9 +35,9 @@
           <div class="panel-heading">Recent added comments for restaurants</div>
           <div class="panel-body">
               <% @recent_comments.each do |comment| %>
-              <h4><%= link_to comment.restaurant.name, restaurant_path(id:comment.restaurant.id)%></h4>
+              <h4 class="commenter_name"><%= link_to comment.restaurant.name, restaurant_path(id:comment.restaurant.id)%></h4>
               <p><%= truncate(comment.content, length: 80) %>
-              <p>by <%= link_to comment.user.name, user_path(id:comment.user.id)%></p>
+              <p><%= link_to comment.user.name, user_path(id:comment.user.id)%></p>
               <hr>
               <%end%>
           </div>

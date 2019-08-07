@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1><%= @restaurant.name %></h1>
-      <p>[<%= @restaurant.category.name %>]</p>
+      <h1 class="restaurant_name"><%= @restaurant.name %></h1>
+      <p class="content">[<%= @restaurant.category.name %>]</p>
     </div>
 
     <div class="col-md-4">
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="col-md-8">
-      <%= simple_format @restaurant.description %>
+      <%= simple_format(@restaurant.description ,class:"simple-format")%>
       <hr>
       <%= link_to "Dashboard", dashboard_restaurant_path(@restaurant), method: :post, class:"btn btn-primary" %>
        <!--render 方法後，使用 locals: {} 選項，為 Partial 裡的區域變數指定內容。把 @restaurant 傳到 Partial 裡，指派給 restaurant 變數」：-->
@@ -42,34 +42,38 @@
 <div class="container">
   <div class="row">
     <!--顯示與餐廳相關的評論 -->
-    <% @restaurant.comments.each do |comment| %>
-      <div>
-  <!--   <%= comment.user.email.split('@').first %>   -->
-  <!--這個方法是用在當產生的假資料還沒有name屬性時，提取@前面的名字做為評論使用者名稱
-現在有新增假資料資料格式 name: user_name，故可被替代comment.user.name取代-->
-       <h4><%= comment.user.name %></h4>
-       <p><%= simple_format comment.content %></p>
-       <p class="text-muted">
-         <em><%= time_ago_in_words(comment.created_at) %> ago -</em>>
-       </p>
-      <!-- 只有管理員能看見「Delete」的按鈕-->
-       <% if current_user.admin? %>
-        <%= link_to "Delete", restaurant_comment_path(@restaurant, comment),method: :delete, data:{ confirm: "Are you sure?" } %>
-       <% end %>
-      <% end %>
+       <div class="col-md-12">
+          <% @restaurant.comments.each do |comment| %>
+              <div class="user_comment_background">
+           <!--   <%= comment.user.email.split('@').first %>   -->
+           <!--這個方法是用在當產生的假資料還沒有name屬性時，提取@前面的名字做為評論使用者名稱
+           現在有新增假資料資料格式 name: user_name，故可被替代comment.user.name取代-->
+                 <h4 class="user_name"><%= comment.user.name %></h4>
+                 <p class="content"><%= simple_format(comment.content,class:"simple-format-restaurant_comment") %></p>
+                 <p class="text-muted">
+                   <em><%= time_ago_in_words(comment.created_at) %> ago -</em>>
+                 </p>
+          <!-- 只有管理員能看見「Delete」的按鈕-->
+                  <% if current_user.admin? %>
+                    <%= link_to "Delete", restaurant_comment_path(@restaurant, comment),method: :delete, data:{ confirm: "Are you sure?" }, class: "btn btn-danger"%>
+                  <% end %>
+              </div>
+          <% end %>
 
-     <div>
-    <!-- 新增評論的表單輸入框 -->
-      <%= form_for [@restaurant, @comment] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, placeholder: "Leave you message here", class: "form-control" %>
+
+
+          <!-- 新增評論的表單輸入框 -->
+            <%= form_for [@restaurant, @comment] do |f| %>
+              <div class="form-group">
+                <%= f.text_area :content, placeholder: "Leave you message here", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <!--省略不寫f.submit後面的值，rails會自動判斷@comment是new或非new/既存，new的話顯示Create Comment,否則顯示Update Comment-->
+                <%= f.submit class: "btn btn-primary" %>
+                <!--使用 <button type="reset"> 可設定取消按鈕-->
+                <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+              </div>
+             <% end %>
         </div>
-       <div class="form-group">
-         <!--省略不寫f.submit後面的值，rails會自動判斷@comment是new或非new/既存，new的話顯示Create Comment,否則顯示Update Comment-->
-         <%= f.submit class: "btn btn-primary" %>
-         <!--使用 <button type="reset"> 可設定取消按鈕-->
-         <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-       </div>
-       <% end %>
   </div>
 </div>
