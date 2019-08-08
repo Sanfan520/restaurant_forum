@@ -90,7 +90,7 @@ small{
 }
 
 
-.form-control {
+.form-control .user-edit{
     width: 68%;
 }
 /*flash message*/
@@ -128,6 +128,16 @@ img.img-responsive.center-block.picture {
   margin-left: 15px;
 }
 
+/*restaurant show.html.erb*/
+.comment-title{
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/*user index.html.erb*/
+.col-md-9.col-sm-8.user-details {
+    color: #ffffff;
+}
 
 /* user index.html.erb*/
 .foodies_background{
