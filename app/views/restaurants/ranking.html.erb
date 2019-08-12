@@ -31,7 +31,7 @@
           <!--點圖片也能進入個別餐廳資料(show)，讓link_to裡再包image_tag-->
           <div class="col-md-3 picture-holder"> <!--picture-holder is used for keep distance between restaurant picture and the description -->
             <%= link_to restaurant_path(restaurant) do %>
-             <%= image_tag restaurant.image, class: "img-responsive center-block picture" %>
+             <%= image_tag restaurant.image, width: "120px", height: "80px",class: "img-responsive center-block picture" %>
             <% end %>
           </div>
 

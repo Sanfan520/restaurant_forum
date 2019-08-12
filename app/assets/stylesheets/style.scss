@@ -9,6 +9,11 @@ body {
   height: 100%;
 }
 
+.user-image{
+  min-height: 173px;
+  background-repeat: no-repeat;
+}
+
 .wrapper{
 box-sizing: border-box;
 }
@@ -115,6 +120,15 @@ margin-top:20px;
   min-height: 500px;
 }
 
+/*restaurants dashboard.html.erb*/
+.restaurant-intro{
+  color:#ffffff;
+}
+
+.restaurant-intro .details{
+  font-size: 20px;
+}
+
 /*restaurant ranking.html.erb*/
 img.img-responsive.center-block.picture {
     min-width: 206px;
@@ -145,6 +159,21 @@ img.img-responsive.center-block.picture {
   padding:5px 3px;
   border-radius:10px;
 }
+
+/*user edit.html.erb*/
+.form-control.user-edit {
+    width: 68%;
+}
+
+/*user show.html.erb*/
+.following_picture{
+  max-height: 80px;
+  max-width: 60px;
+}  /*此div用來限制圖片大小*/
+
+img.img-responsive.center-block.img-rounded.img.following-photo {
+    height: 50px;
+} /*限制div裡面img高度*/
 
 /*restaurant show.html.erb */
 .user_comment_background{

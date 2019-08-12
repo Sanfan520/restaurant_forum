@@ -30,12 +30,12 @@
   <div class="col-md-3 col-sm-4 col-xd-6 text-center user-item">
     <div class="foodies_background">
         <%= link_to user_path(user) do%>
-        <% for img_id in 1..7 %>
-            <% if image_path(user.avatar).include? ('/'+img_id.to_s+'.png') %>
-                <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive center-block img-rounded img") %>
-            <% end %>
-        <% end %>
-        <h4><%= user.name%></h4>
+           <% for img_id in 1..7 %>
+               <% if image_path(user.avatar).include? ('/'+img_id.to_s+'.png') %>
+                   <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive center-block img-rounded img") %>
+               <% end %>
+           <% end %>
+           <h4><%= user.name%></h4>
         <% end %>
         <%= render partial: "shared/follow", locals: {user: user} %>
         <%= render partial: "shared/friend", locals: {user: user} %>

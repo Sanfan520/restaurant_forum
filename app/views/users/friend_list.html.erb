@@ -3,7 +3,7 @@
     <div class="col-md-10 col-md-offset-1">
 
               <h1 class="friend-list"> My friend List</h1>
-              <!-- 顯示Friends的清單，panel包一個list-group  -->       
+              <!-- 顯示Friends的清單，panel包一個list-group  -->
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title"><strong><%= @user.friends.count %> friends</strong></h3>
@@ -13,12 +13,22 @@
                    <% @all_friends.each do |friend| %>
                        <li class= "list-group-item">
                            <%= link_to user_path(friend) do %>
+                              <div class="friend">
+                                 <% for img_id in 1..7 %>
+                                     <% if image_path(friend.avatar).include? ('/'+img_id.to_s+'.png') %>
+                                         <%= image_tag('/img/'+img_id.to_s+'.png',  height: 30,width: 30, class: "img-responsive  img-rounded img") %>
+                                     <% end %>
+
+                                 <% end %>
+                           <!--
                            <%= image_tag(friend.avatar, height: 30,width: 30,class: "img-circle") %>
-                           <%= friend.name %>
+                           -->
+                                 <%= friend.name %>
+                              </div>
                            <% end %>
                        </li>
                     <%end%>
-               </ul>
+                </ul>
              </div>
 
      </div>

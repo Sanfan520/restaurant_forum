@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 restaurant-intro">
        <h1><%= @restaurant.name %>'s Dashboard</h1>
        <hr>
-       <ul>
-          <li>有<%= @restaurant.comments.count%> 筆評論</li>
-          <li>這家餐廳的平均價位為 $xxx</li>
-          <li>xx人收藏這家餐廳</li>
-       </ul>
+        <div class="restaurant-intro details">
+           <ul>
+              <li>There are <%= @restaurant.comments.count%> restaurant comments</li>
+              <li>The average price of this restaurant is $xxx</li>
+              <li>There are <%=@restaurant.favorites_count%> collect this restaurant as their favorite</li>
+           </ul>
+        </div>
      </div>
    </div>
  </div>

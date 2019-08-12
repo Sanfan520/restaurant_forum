@@ -3,33 +3,42 @@
     <div class="col-md-10 col-md-offset-1">
       <!-- page-header 裡面顯示個人檔案資料 -->
           <div class="page-header">
-            <div class="col-md-3 col-sm-4">
-              <div class="text-center">
-                <%= image_tag @user.avatar, class: "img-rounded" %>
+             <div class="col-md-offset-1 col-md-2 col-sm-4">
+                  <div class="user﹍picture">
+                     <% for img_id in 1..7 %>
+                          <% if image_path(@user.avatar).include? ('/'+img_id.to_s+'.png') %>
+                              <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive center-block img-rounded img") %>
+                          <% end %>
+                     <% end %>
+              <!--由上方程式碼取代
+                <% image_tag @user.avatar, class: "img-rounded" %>
+              -->
+                  </div>
               </div>
-            </div>
-            <div class="col-md-9 col-sm-8 user-details">
-              <h2><%= @user.name %></h2>
-              <p><strong><%= @user.email %></strong></p>
-           <!-- inline & unstyled 的 list -->
-              <ul class= "list-style list-inline">
-             <li><strong><%= @commented_restaurants.count %></strong> 已評論餐廳</li>
-             <li><strong><%= @favorited_restaurants.count %></strong> 收藏的餐廳</li>
-             <li><strong><%= @followings.count %></strong> followings</li>
-             <li><strong><%= @followers.count %></strong> followers</li>
-              </ul>
-              <div><%= simple_format @user.intro %></div>
-              <% if @user.email == current_user.email %>
-                <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
-                <%= link_to 'My Friends', friend_list_user_path(@user),class: "btn btn-primary" %>
-              <% end %>
+
+              <div class="col-md-offset-1 col-md-9 col-sm-8 user-details">
+                 <h2><%= @user.name %></h2>
+                 <p><strong><%= @user.email %></strong></p>
+                 <!-- inline & unstyled 的 list -->
+                 <ul class= "list-style list-inline">
+                    <li><strong><%= @commented_restaurants.count %></strong> 已評論餐廳</li>
+                    <li><strong><%= @favorited_restaurants.count %></strong> 收藏的餐廳</li>
+                    <li><strong><%= @followings.count %></strong> followings</li>
+                    <li><strong><%= @followers.count %></strong> followers</li>
+                 </ul>
+                 <div><%= simple_format @user.intro %></div>
+                 <% if @user.email == current_user.email %>
+                   <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+                   <%= link_to 'My Friends', friend_list_user_path(@user),class: "btn btn-primary" %>
+                 <% end %>
               </div>
-            <div class="clearfix"></div>
+
+              <div class="clearfix"></div>
           </div>
 
            <br>
 
-           <div class="col-md-4">
+           <div class="col-md-offset-1 col-md-2">
                 <!-- 顯示followings的清單，panel包一個list-group  -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -40,9 +49,18 @@
                       <% @followings.each do |following| %>
                          <li class= "list-group-item">
                              <%= link_to user_path(following) do %>
-                             <%= image_tag(following.avatar, height: 30,width: 30,class: "img-circle") %>
-                             <%= following.name %>
-                             <% end %>
+                               <div class="following-picture text-center">
+                                   <% for img_id in 1..7 %>
+                                        <% if image_path(following.avatar).include? ('/'+img_id.to_s+'.png') %>
+                                          <%= image_tag('/img/'+img_id.to_s+'.png',class: "img-responsive center-block img-rounded img following-photo") %>
+                                        <% end %>
+                                   <% end %>
+                                   <!-- 被上方程式碼取代
+                                   <%= image_tag(following.avatar, height: 30,width: 30,class: "img-circle") %>
+                                   -->
+                                   <%= following.name %>
+                                </div>
+                              <% end %>
                          </li>
                       <%end%>
                     </ul>
@@ -58,17 +76,25 @@
                   <ul class="list-group">
                    <% @followers.each do |follower| %>
                       <li class= "list-group-item">
-                          <%= link_to user_path(follower) do %>
-                          <%= image_tag(follower.avatar, height: 30,width: 30,class: "img-circle") %>
-                          <%= follower.name %>
+                        <%= link_to user_path(follower) do %>
+                          <div class="following-picture text-center">
+                              <% for img_id in 1..7 %>
+                                   <% if image_path(follower.avatar).include? ('/'+img_id.to_s+'.png') %>
+                                     <%= image_tag('/img/'+img_id.to_s+'.png',class: "img-responsive center-block img-rounded img following-photo") %>
+                                   <% end %>
+                              <% end %>
+                              <%= follower.name %>
                           <% end %>
+                          <!-- 被上方程式碼取代
+                          <%= image_tag(follower.avatar, height: 30,width: 30,class: "img-circle") %>
+                          -->
                       </li>
                    <%end%>
                   </ul>
                 </div>
             </div>
 
-          <div class="col-md-8">
+          <div class="col-md-8 col-md-offset-1">
         <!-- 顯示收藏的餐廳的清單，panel包一個panel-body裡面簡單顯示餐廳圖片和name -->
                <div class="panel panel-default">
                   <div class="panel-heading">
@@ -80,8 +106,16 @@
                     <% @commented_restaurants.each do |restaurant| %>
                      <%= link_to(restaurant) do %>
                        <div class="restaurant-details">
-                         <div>
+                         <div >
+                           <% for img_id in 1..9 %>
+                             <% if image_path(restaurant.image).include?('/'+ img_id.to_s+'.jpg') %> <!--←由路徑判斷圖檔名-->
+                             <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "img-responsive center-block") %> <!--←顯示路徑改為public裡面的圖檔 -->
+                             <% end %>
+                           <% end %>
+
+                          <!--   被上方程式碼取代
                           <%= image_tag restaurant.image, class: "img-responsive img-rounded"%>
+                          -->
                          </div>
                         <h5><%= restaurant.name %></h5>
                        </div>

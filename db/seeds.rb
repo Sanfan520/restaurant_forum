@@ -38,7 +38,7 @@ User.create!(
   email: "sandy@gmail.com",
   password:"12345678",
   role: "admin",
-  intro: "my name is sandy and i was born in taiwan in 1980, and I used to be a teacher ten years ago",
+  intro: "my name is sandy and i was born in Taiwan in 1980, and I used to be a teacher ten years ago",
   avatar: File.open(File.join(Rails.root, "/public/img/3.png"))
   )
 puts "Default admin created"
