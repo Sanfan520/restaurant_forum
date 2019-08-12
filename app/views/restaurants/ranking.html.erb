@@ -31,8 +31,18 @@
           <!--點圖片也能進入個別餐廳資料(show)，讓link_to裡再包image_tag-->
           <div class="col-md-3 picture-holder"> <!--picture-holder is used for keep distance between restaurant picture and the description -->
             <%= link_to restaurant_path(restaurant) do %>
-             <%= image_tag restaurant.image, width: "120px", height: "80px",class: "img-responsive center-block picture" %>
+              <div class="restuarnat-image">
+                 <% for img_id in 1..9 %>
+                   <% if image_path(restaurant.image).include?('/'+ img_id.to_s+'.jpg') %> <!--←由路徑判斷圖檔名-->
+                    <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "img-responsive center-block") %> <!--←顯示路徑改為public裡面的圖檔 -->
+                   <% end %>
+                 <% end %>
+              </div>   
             <% end %>
+            <!--
+             <%= image_tag restaurant.image,class: "img-responsive center-block picture" %>
+             -->
+
           </div>
 
           <div class="col-md-8">
