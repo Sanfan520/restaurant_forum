@@ -176,16 +176,6 @@ img.img-responsive.center-block{
     width: 68%;
 }
 
-/*user show.html.erb*/
-.following_picture{
-  max-height: 80px;
-  max-width: 60px;
-}  /*此div用來限制圖片大小*/
-
-img.img-responsive.center-block.img-rounded.img.following-photo {
-    height: 50px;
-} /*限制div裡面img高度*/
-
 /*restaurant show.html.erb */
 .user_comment_background{
   background-color:#f2f2f2;
@@ -205,7 +195,7 @@ img.img-responsive.center-block.img-rounded.img.following-photo {
   text-align: center;
 }
 
-     /*.restaurants-details 底下的直接div*/
+/*.restaurants-details 底下的直接div*/
 .restaurant-details > div {
   height: 80px;
 }
@@ -281,6 +271,16 @@ background:transparent;
 
 /*user friend list page*/
 .friend-list {text-align: center;}
+
+/*user show page*/
+img.user-img {
+    height: 50px;
+}
+img.restaurant-img {
+    height: 80px;
+    width: 106px;
+}
+
 
 /*devise registration edit.html.erb*/
 .block{

@@ -7,8 +7,8 @@
                   <div class="user﹍picture">
                      <% for img_id in 1..7 %>
                           <% if image_path(@user.avatar).include? ('/'+img_id.to_s+'.png') %>
-                              <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive center-block img-rounded img") %>
-                          <% end %>
+                              <%= image_tag('/img/'+img_id.to_s+'.png', class: "img-responsive img") %>
+                          <% end %>   <!--v-->
                      <% end %>
               <!--由上方程式碼取代
                 <% image_tag @user.avatar, class: "img-rounded" %>
@@ -38,21 +38,21 @@
 
            <br>
 
-           <div class="col-md-offset-1 col-md-2">
+           <div class="col-md-3">
                 <!-- 顯示followings的清單，panel包一個list-group  -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                      <h3 class="panel-title"><strong><%= @followings.count %> followings</strong></h3>
+                      <h3 class="panel-title text-center"><strong><%= @followings.count %> followings</strong></h3>
                     </div>
 
                     <ul class="list-group">
                       <% @followings.each do |following| %>
                          <li class= "list-group-item">
                              <%= link_to user_path(following) do %>
-                               <div class="following-picture text-center">
+                               <div class="following-picture">
                                    <% for img_id in 1..7 %>
                                         <% if image_path(following.avatar).include? ('/'+img_id.to_s+'.png') %>
-                                          <%= image_tag('/img/'+img_id.to_s+'.png',class: "img-responsive center-block img-rounded img following-photo") %>
+                                          <%= image_tag('/img/'+img_id.to_s+'.png',class: "user-img center") %>
                                         <% end %>
                                    <% end %>
                                    <!-- 被上方程式碼取代
@@ -70,17 +70,17 @@
                 <!-- 顯示followers的清單，panel包一個list-group  -->
                 <div class="panel panel-default">
                    <div class="panel-heading">
-                     <h3 class="panel-title"><strong><%= @followers.count %> followers</strong></h3>
+                     <h3 class="panel-title text-center"><strong><%= @followers.count %> followers</strong></h3>
                    </div>
 
                   <ul class="list-group">
                    <% @followers.each do |follower| %>
                       <li class= "list-group-item">
                         <%= link_to user_path(follower) do %>
-                          <div class="following-picture text-center">
+                          <div class="following-picture">
                               <% for img_id in 1..7 %>
                                    <% if image_path(follower.avatar).include? ('/'+img_id.to_s+'.png') %>
-                                     <%= image_tag('/img/'+img_id.to_s+'.png',class: "img-responsive center-block img-rounded img following-photo") %>
+                                     <%= image_tag('/img/'+img_id.to_s+'.png',class: "user-img center") %>
                                    <% end %>
                               <% end %>
                               <%= follower.name %>
@@ -98,7 +98,7 @@
         <!-- 顯示收藏的餐廳的清單，panel包一個panel-body裡面簡單顯示餐廳圖片和name -->
                <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h3 class="panel-title"><strong><%= @commented_restaurants.count %> commented restaurants</strong></h3>
+                    <h3 class="panel-title text-center"><strong><%= @commented_restaurants.count %> commented restaurants</strong></h3>
                   </div>
 
                   <div class="panel-body">
@@ -109,7 +109,7 @@
                          <div >
                            <% for img_id in 1..9 %>
                              <% if image_path(restaurant.image).include?('/'+ img_id.to_s+'.jpg') %> <!--←由路徑判斷圖檔名-->
-                             <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "img-responsive center-block") %> <!--←顯示路徑改為public裡面的圖檔 -->
+                             <%= image_tag('/img/'+ img_id.to_s + '.jpg', class: "restaurant-img") %> <!--←顯示路徑改為public裡面的圖檔 -->
                              <% end %>
                            <% end %>
 
