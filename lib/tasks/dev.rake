@@ -34,7 +34,7 @@ namespace :dev do
       name: "#{user_name}",
       email: "#{user_name}@yahoo.com.tw",
       intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam",
-      password: "123456",
+      password: "123456789",
       avatar: File.open(File.join(Rails.root,"/public/img/#{rand(1..7)}.png"))
       )
     end

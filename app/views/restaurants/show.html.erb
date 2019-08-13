@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1 class="restaurant_name"><%= @restaurant.name %></h1>
-      <p class="content">[<%= @restaurant.category.name %>]</p>
+      <p class="restaurant-category">[<%= @restaurant.category.name %>]</p>
     </div>
 
     <div class="col-md-4">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="col-md-8">
-      <%= simple_format(@restaurant.description ,class:"simple-format")%>
+      <%= simple_format(@restaurant.description ,class:"restaurant-details-format")%>
       <hr>
       <%= link_to "Dashboard", dashboard_restaurant_path(@restaurant), method: :get, class:"btn btn-primary" %>
        <!--render 方法後，使用 locals: {} 選項，為 Partial 裡的區域變數指定內容。把 @restaurant 傳到 Partial 裡，指派給 restaurant 變數」：-->
