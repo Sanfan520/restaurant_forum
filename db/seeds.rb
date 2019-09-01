@@ -36,7 +36,7 @@ User.destroy_all
 User.create!(
   name: "Sandy",
   email: "sandy@gmail.com",
-  password:"12345678",
+  password:"123456789",
   role: "admin",
   intro: "my name is sandy and i was born in Taiwan in 1980, and I used to be a teacher ten years ago",
   avatar: File.open(File.join(Rails.root, "/public/img/3.png"))

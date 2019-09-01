@@ -1,7 +1,6 @@
 <%#  幫助使用者了解為何被退回，我們需要讀取 @restaurant.errors 的內容，引導使用者再次進行修改。 %>
 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
     <div class="block">
-       <div class="container">
             <% if @restaurant.errors.any? %>
               <h4>We have some errors here !</h4>
               <ul>
@@ -67,6 +66,5 @@
              <% end %>
        <%##@restaurant.image? - 查看該餐廳物件的 image 屬性是否有攜帶內容，有則回傳 True，
        沒有則回傳 False。（ Rails 裡所有的物件屬性都會自動帶有「attribute_name?」這樣的方法） %>
-          </div>
       </div>
   </div>
